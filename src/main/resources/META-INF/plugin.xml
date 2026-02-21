@@ -1,0 +1,42 @@
+<idea-plugin>
+    <id>com.searchfinder</id>
+    <name>Search Finder</name>
+    <version>1.0.0</version>
+    <vendor>SearchFinder</vendor>
+
+    <description><![CDATA[
+        Search Finder is a powerful plugin that lets you search for any keyword, class name, or string
+        across your entire project and navigate to each occurrence instantly.
+        Perfect for unstructured codebases where files do not follow naming conventions.
+        Find BottomSheet, AlertDialog, Snackbar, API keys, and more, even in files named Helper.kt or Utils.java.
+        <ul>
+            <li>Full-project content search with case-sensitive, regex, and whole-word modes</li>
+            <li>Double-click to navigate to the exact line</li>
+            <li>File-type badges color-coded for Kotlin, Java, XML, JSON, and more</li>
+            <li>Live filtering by file type and text</li>
+            <li>Stats dashboard with file-type breakdown</li>
+            <li>Right-click context menu with Navigate, Copy Line, Copy Path</li>
+            <li>CSV export for offline analysis</li>
+            <li>Full dark mode support</li>
+        </ul>
+    ]]></description>
+
+    <depends>com.intellij.modules.platform</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <toolWindow id="Search Finder"
+                    anchor="bottom"
+                    factoryClass="com.searchfinder.ui.SearchFinderToolWindowFactory"
+                    icon="AllIcons.Actions.Find"/>
+    </extensions>
+
+    <actions>
+        <action id="SearchFinder.SearchProject"
+                class="com.searchfinder.actions.SearchProjectAction"
+                text="Search Key in Project"
+                description="Open Search Finder to search for a key across the project">
+            <add-to-group group-id="ToolsMenu" anchor="last"/>
+            <keyboard-shortcut keymap="$default" first-keystroke="ctrl shift K"/>
+        </action>
+    </actions>
+</idea-plugin>
